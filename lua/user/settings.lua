@@ -2,13 +2,21 @@ local opts = { noremap = true, silent = true }
 local map = vim.api.nvim_set_keymap
 local set = vim.opt
 
+
 local config = {
 
   -- Set colorscheme
-  colorscheme = "onedark",
+  colorscheme = "nordfox",
 
   -- Add plugins
   plugins = {
+    {
+      "EdenEast/nightfox.nvim",
+      event = "BufRead",
+      config = function()
+        require('nightfox').load('nordfox')
+      end,
+    },
     -- { "andweeb/presence.nvim" },
     -- {
     -- "ray-x/lsp_signature.nvim",
@@ -39,7 +47,7 @@ local config = {
     toggle_term = true,
     comment = true,
     symbols_outline = true,
-    indent_blankline = true,
+    indent_blankline = false,
     dashboard = true,
     which_key = true,
     neoscroll = true,
@@ -49,10 +57,16 @@ local config = {
 }
 
 -- Set options
-set.relativenumber = true
+set.relativenumber = false                     -- Don't use relative line numbers
+set.wrap = true                                -- Wrap lines longer than the width of window
 
 -- Set key bindings
 map("n", "<C-s>", ":w!<CR>", opts)
+
+-- Remap , as leader key
+map("", ",", "<Nop>", opts)
+vim.g.mapleader = ","
+vim.g.maplocalleader = ","
 
 -- Set autocommands
 vim.cmd [[
