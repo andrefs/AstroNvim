@@ -14,7 +14,11 @@ local config = {
       "EdenEast/nightfox.nvim",
       event = "BufRead",
       config = function()
-        require('nightfox').load('nordfox')
+        local nightfox = require('nightfox')
+        nightfox.setup({
+          fox = "nordfox",
+        })
+        nightfox.load('nordfox')
       end,
     },
     -- { "andweeb/presence.nvim" },
