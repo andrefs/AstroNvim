@@ -21,6 +21,7 @@ local config = {
         nightfox.load('nordfox')
       end,
     },
+    { "tjvr/vim-nearley" },
     -- { "andweeb/presence.nvim" },
     -- {
     -- "ray-x/lsp_signature.nvim",
